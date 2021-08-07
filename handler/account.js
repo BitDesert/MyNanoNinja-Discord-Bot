@@ -3,7 +3,6 @@ const axios = require("axios");
 const nanocurrency = require("nanocurrency");
 
 const constants =  require('../constants')
-const tools =  require('../tools')
 
 async function sendAddressInfo(client, channel, accountname){
   try {

@@ -14,7 +14,7 @@ async function getBlocksPerSecond(dimension){
     avgPoints: (statsvalues.length - lastPoints)
   });
 
-  console.log(dimension, growth, lastPoints, statsvalues.length);
+  // console.log(dimension, growth, lastPoints, statsvalues.length);
 
   return {
     lastValue: stats.data.latest_values[0],
