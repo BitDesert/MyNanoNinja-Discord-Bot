@@ -11,10 +11,10 @@ client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	// set a new item in the Collection
-	// with the key as the command name and the value as the exported module
-	client.commands.set(command.name, command);
+  const command = require(`./commands/${file}`);
+  // set a new item in the Collection
+  // with the key as the command name and the value as the exported module
+  client.commands.set(command.name, command);
 }
 
 var tools = require('./tools');
@@ -60,28 +60,28 @@ async function handleReaction(reaction, user){
 }
 
 client.on('messageCreate', async message => {
-	if (!client.application?.owner) await client.application?.fetch();
+  if (!client.application?.owner) await client.application?.fetch();
 
-	if (message.content.toLowerCase() === '.deploy' && message.author.id === client.application?.owner.id) {
-		const commands = await client.guilds.cache.get(message.guildId)?.commands.set(client.commands);
-		console.log(commands.size);
+  if (message.content.toLowerCase() === '.deploy' && message.author.id === client.application?.owner.id) {
+    const commands = await client.guilds.cache.get(message.guildId)?.commands.set(client.commands);
+    console.log(commands.size);
 
     message.reply('Deployed ' + commands.size + ' commands.')
-	}
+  }
 });
 
 // dynamic commands
 client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
+  if (!interaction.isCommand()) return;
 
-	if (!client.commands.has(interaction.commandName)) return;
+  if (!client.commands.has(interaction.commandName)) return;
 
-	try {
-		await client.commands.get(interaction.commandName).execute(interaction);
-	} catch (error) {
-		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-	}
+  try {
+    await client.commands.get(interaction.commandName).execute(interaction);
+  } catch (error) {
+    console.error(error);
+    await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+  }
 });
 
 client.login(process.env.TOKEN);

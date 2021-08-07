@@ -4,11 +4,11 @@ const axios = require("axios");
 const constants =  require('../constants')
 
 module.exports = {
-	name: 'wallets',
-	description: 'The unofficial wallet list',
-	async execute(interaction) {
+   name: 'wallets',
+   description: 'The unofficial wallet list',
+   async execute(interaction) {
 
-		const embed = new MessageEmbed()
+      const embed = new MessageEmbed()
       .setTitle('Unofficial Wallet List')
       .setColor(0xFF0000)
       .setDescription('[Open Complete List](https://nanowallets.guide)')
@@ -23,6 +23,6 @@ module.exports = {
       .addField('Nanollet', '_Windows, Mac, Linux_\n[Visit website](https://nanollet.org)', true)
       .addField('WeNano', '_iOS_\n[Visit website](https://wenano.net)', true)
 
-		await interaction.reply({ embeds: [embed] });
-	},
+      await interaction.reply({ embeds: [embed] });
+   },
 };
