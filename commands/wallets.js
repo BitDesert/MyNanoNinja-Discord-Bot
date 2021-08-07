@@ -20,7 +20,6 @@ module.exports = {
       .addField('Guarda', '_Windows, Mac, Linux, \nWeb, Android, iOS_\n[Visit website](https://guarda.com)', true)
       .addField('Vola', '_iOS_\n[Visit website](https://getvola.com)', true)
       .addField('Nalli', '_Android, iOS_\n[Visit website](https://nalli.app)', true)
-      .addField('Nanollet', '_Windows, Mac, Linux_\n[Visit website](https://nanollet.org)', true)
       .addField('WeNano', '_iOS_\n[Visit website](https://wenano.net)', true)
 
       await interaction.reply({ embeds: [embed] });
