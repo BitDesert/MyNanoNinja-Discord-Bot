@@ -17,7 +17,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "big.js": "^6.1.1",
-    "discord.js": "^13.0.1",
+    "discord.js": "^13.1.0",
     "moment": "^2.29.1",
     "nano-prettify": "^1.0.2",
     "nanocurrency": "^2.5.0"
