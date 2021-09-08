@@ -10,8 +10,8 @@ module.exports = {
 
     const embed = new MessageEmbed()
       .setColor(0xFF0000)
-      .setDescription('For trade talk please visit the following server:')
-      .addField('NanoTrade', '[Join server](https://bit.ly/nanotrade-discord)', true)
+      .setTitle('No trade talk')
+      .setDescription('Please visit a different server e.g. `/nanotrade`')
       .setFooter('My Nano Ninja | mynano.ninja', interaction.client.user.avatarURL())
 
     await interaction.reply({ embeds: [embed] });
