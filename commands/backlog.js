@@ -4,6 +4,7 @@ var moment = require('moment');
 
 const getBlocksPerSecond =  require('../bps')
 const constants =  require('../constants')
+const tools = require('../tools')
 
 module.exports = {
   name: 'backlog',
