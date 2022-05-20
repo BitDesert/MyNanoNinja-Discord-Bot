@@ -24,7 +24,7 @@ module.exports = {
     var clearedin_seconds = backlog / cps_avg;
     var clearedin = moment().seconds(clearedin_seconds).fromNow();
 
-    if(percent_cemented > 0.999){
+    if(percent_cemented > 0.9999){
       interaction.reply('No backlog');
       return;
     }
