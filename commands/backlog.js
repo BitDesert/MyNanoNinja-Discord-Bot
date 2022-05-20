@@ -34,7 +34,7 @@ module.exports = {
       .setTitle('Backlog Estimation')
       .setColor(constants.nanoBlue)
       .addField('Backlog', backlog.toLocaleString('en-US'), true)
-      .addField('CPS (avg 60 min)', tools.round(cps_avg, 2), true)
+      .addField('CPS (avg 60 min)', tools.round(cps_avg, 2).toString(), true)
       .addField('Cleared', clearedin, true)
       .setFooter('My Nano Ninja | mynano.ninja', interaction.client.user.avatarURL())
 
