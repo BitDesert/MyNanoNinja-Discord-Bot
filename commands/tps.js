@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js');
 const axios = require("axios");
 
 const constants =  require('../constants')
+const tools = require('../tools')
 
 module.exports = {
   name: 'tps',
