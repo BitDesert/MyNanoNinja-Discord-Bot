@@ -13,16 +13,23 @@ module.exports = {
     try {
       var blocks = await axios.get('https://mynano.ninja/api/blockcount');
       var cps = await getBlocksPerSecond('cps_p75');
+      var bps = await getBlocksPerSecond('bps_p75');
     } catch (error) {
       return console.log(error);
     }
 
-    const sum = cps.raw.reduce((a, b) => a + b, 0);
-    const cps_avg = (sum / cps.raw.length) || 0;
+    const cps_sum = cps.raw.reduce((a, b) => a + b, 0);
+    const cps_avg = (cps_sum / cps.raw.length) || 0;
+    
+    const bps_sum = bps.raw.reduce((a, b) => a + b, 0);
+    const bps_avg = (bps_sum / bps.raw.length) || 0;
+    
+    // use CPS-BPS delta for backlog clearance
+    const cps_avg_delta = cps_avg - bps_avg;
 
     var backlog = parseInt(blocks.data.count) - parseInt(blocks.data.cemented);
     var percent_cemented = parseInt(blocks.data.cemented) / parseInt(blocks.data.count);
-    var clearedin_seconds = backlog / cps_avg;
+    var clearedin_seconds = backlog / cps_avg_delta;
     var clearedin = moment().seconds(clearedin_seconds).fromNow();
 
     if(percent_cemented > 0.9999){
@@ -34,7 +41,7 @@ module.exports = {
       .setTitle('Backlog Estimation')
       .setColor(constants.nanoBlue)
       .addField('Backlog', backlog.toLocaleString('en-US'), true)
-      .addField('CPS (avg 60 min)', tools.round(cps_avg, 2).toString(), true)
+      .addField('CPS delta (avg 60 min)', tools.round(cps_avg_delta, 2).toString(), true)
       .addField('Cleared', clearedin, true)
       .setFooter('My Nano Ninja | mynano.ninja', interaction.client.user.avatarURL())
 
