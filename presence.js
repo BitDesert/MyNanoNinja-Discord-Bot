@@ -6,8 +6,8 @@ async function updatePresence(client) {
   var presence = '';
 
   try {
-    var growth_cps = await getBlocksPerSecond('cps_p75');
-    var growth_bps = await getBlocksPerSecond('bps_p75');
+    var growth_cps = await getBlocksPerSecond('cps_p75_pr');
+    var growth_bps = await getBlocksPerSecond('bps_p75_pr');
 
     presence = tools.growthToEmoji(growth_cps.growth) + tools.formatTPS(growth_cps.lastValue) + ' CPS | ' + tools.growthToEmoji(growth_bps.growth) + tools.formatTPS(growth_bps.lastValue) + ' BPS | .help'
   } catch (error) {

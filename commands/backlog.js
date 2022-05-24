@@ -12,8 +12,8 @@ module.exports = {
   async execute(interaction) {
     try {
       var blocks = await axios.get('https://mynano.ninja/api/blockcount');
-      var cps = await getBlocksPerSecond('cps_p75');
-      var bps = await getBlocksPerSecond('bps_p75');
+      var cps = await getBlocksPerSecond('cps_p75_pr');
+      var bps = await getBlocksPerSecond('bps_p75_pr');
     } catch (error) {
       return console.log(error);
     }
