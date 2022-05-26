@@ -32,8 +32,7 @@ module.exports = {
     var clearedin_seconds = backlog / cps_avg_delta;
     var clearedin = moment().seconds(clearedin_seconds).fromNow();
 
-    // if cleared in under 5 minutes = no backlog
-    if(clearedin_seconds < 3600){
+    if(clearedin_seconds < 3600 || backlog < 1000){
       interaction.reply('No backlog');
       return;
     }
