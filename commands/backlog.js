@@ -32,7 +32,7 @@ module.exports = {
     var clearedin_seconds = backlog / cps_avg_delta;
     var clearedin = moment().seconds(clearedin_seconds).fromNow();
 
-    if(clearedin_seconds < 3600 || backlog < 1000){
+    if((clearedin_seconds < 3600 && clearedin_seconds > 0) || backlog < 1000){
       interaction.reply('No backlog');
       return;
     }
